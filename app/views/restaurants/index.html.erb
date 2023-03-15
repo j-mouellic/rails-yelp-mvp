@@ -1,0 +1,15 @@
+
+<div class="mx-auto mt-5" style="width: 600px">
+  <div class="card-header">
+    Best restaurants around you
+  </div>
+  <ul class="list-group list-group-flush p-1" >
+    <% @restaurants.each do |restaurant| %>
+  <li class="list-group-item">
+      <%= link_to restaurant.name, restaurant_path(restaurant.id) %>
+  </li>
+  <% end %>
+  </ul>
+
+  <%= link_to "Add a new restaurant", new_restaurant_path, class: "btn btn-primary mt-3" %>
+</div>

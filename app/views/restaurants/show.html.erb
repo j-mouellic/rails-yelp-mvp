@@ -1,0 +1,25 @@
+<div class="mx-auto mt-5" style="width: 600px">
+  <h1><%= @restaurant.name %></h1>
+  <p><%= @restaurant.address %></p>
+  <p><%= @restaurant.phone_number %></p>
+  <p><%= @restaurant.category %></p>
+
+  <ul class="list-group list-group-flush">
+    <% @restaurant.reviews.each do |review| %>
+    <li class="list-group-item"><%= review.content %>, <%= review.rating %></li>
+    <% end %>
+  </ul>
+
+  <%= simple_form_for([@restaurant, @review]) do |f| %>
+    <div class="form-inputs">
+      <%= f.input :rating, collection: Review::RANGE %>
+      <%= f.input :content %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Add a Review", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
+  <%= link_to "Back to list", restaurants_path, class: "btn btn-secondary" %>
+</div>
